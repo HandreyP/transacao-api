@@ -23,6 +23,10 @@ public class EstatisticasService {
         DoubleSummaryStatistics estatisticasTransacoes = transacoes.stream()
                 .mapToDouble(TransacaoRequestDto::valor).summaryStatistics();
 
+        if (transacoes.isEmpty()){
+            return new EstatisticasResponseDto(0L,0.0,0.0,0.0, 0.0);
+        }
+
         log.info("Estatísticas retornadas com Sucesso");
         return new EstatisticasResponseDto(estatisticasTransacoes.getCount(),
                 estatisticasTransacoes.getSum(),
