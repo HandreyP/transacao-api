@@ -1,6 +1,7 @@
-package com.javaclass.transacao_api.controller.dtos;
+package com.javaclass.transacao_api.controller;
 
 import com.javaclass.transacao_api.business.services.EstatisticasService;
+import com.javaclass.transacao_api.controller.dtos.EstatisticasResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

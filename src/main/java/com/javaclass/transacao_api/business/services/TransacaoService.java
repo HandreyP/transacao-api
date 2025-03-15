@@ -19,7 +19,7 @@ public class TransacaoService {
 
     public void adicionarTransacao(TransacaoRequestDto transacaoDto){
 
-        log.info("Inicio de gravação de transações");
+        log.info("Inicio de gravação de transações " + transacaoDto);
 
         if(transacaoDto.DataHora().isAfter(OffsetDateTime.now())) {
             String message = "Data e hora maior que a hora atual";
@@ -36,16 +36,21 @@ public class TransacaoService {
         }
 
         listarTransacao.add(transacaoDto);
+        log.info("Transacoes adicionadas com Sucesso");
     }
 
     public void limparTransacao(){
-        log.info("Transacoes eliminadas !");
+        log.info("Iniciado método para eliminar as trasacoes !");
         listarTransacao.clear();
+        log.info("Transacoes deletadas com Sucesso");
     }
 
     public List<TransacaoRequestDto> buscarTransacoes(Integer deltaBusca) {
+        log.info("Iniciado método para buscar as trasacoes");
         OffsetDateTime dataHoraIntervalo = OffsetDateTime.now().minusSeconds(deltaBusca);
 
+
+        log.info("Retorno de transacoes com Sucesso");
         return listarTransacao.stream().filter(transacao -> transacao.DataHora()
                 .isAfter(dataHoraIntervalo)).toList();
     }
